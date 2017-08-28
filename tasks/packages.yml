@@ -1,0 +1,21 @@
+---
+
+- name: Update apt Cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+  become: True
+
+- name: Install list packages.
+  apt: name={{ item }} state=present
+  with_items:
+    - apt-file
+    - build-essential
+    - git
+    - htop
+    - jq
+    - ncdu
+    - tmux
+    - tree
+    - vim
+  become: True

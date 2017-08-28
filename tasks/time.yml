@@ -1,0 +1,14 @@
+---
+
+- name: Install NTP
+  apt: name=ntp state=present
+
+- name: Set timezone to "{{ mbase_timezone }}"
+  timezone:
+    name: "{{ mbase_timezone }}"
+
+- name: Ensure NTP is running and enabled at boot.
+  service:
+    name: ntp
+    state: started
+    enabled: yes
